@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250514182916">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250520174841">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
@@ -1118,8 +1118,6 @@
 				<div class="info-socials__container">
 					<div class="info-socials__main">
 						<a href="" data-popup="#popup" class="info-socials__button _icon-phone"></a>
-						<!--TODO: убрать кнопку, предназначена только для визуального отображения успешной отправки формы -->
-						<a href="" data-popup="#popup-success" hidden></a>
 					</div>
 				</div>
 			</section>
@@ -1204,7 +1202,8 @@
 						<div class="modal-popup__title h3">Заповніть форму і ми звʼяжемося з вами найближчим часом</div>
 						<button data-close type="button" class="popup__close button-close _icon-close"></button>
 					</div>
-					<form action="" class="modal-popup__form form">
+					<!-- TODO: удалить атрибут data-dev и data-popup-message. Используется для отображения pop-up уведомления об успешном действии -->
+					<form action="" data-dev data-popup-message="#popup-success" class="modal-popup__form form">
 						<div class="form__wrap">
 							<div class="form__item">
 								<input type="text" name="name" class="form__input" placeholder="Імʼя*" data-required="name" data-error="Поле є обовʼязковим для заповнення" data-validate>
@@ -1254,7 +1253,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="js/app.min.js?_v=20250514182916"></script>
+	<script src="js/app.min.js?_v=20250520174841"></script>
 </body>
 
 </html>
