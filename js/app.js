@@ -5396,6 +5396,25 @@
                 FLS(`[Форми]: ${message}`);
             }
         }
+        function formQuantity() {
+            document.addEventListener("click", (function(e) {
+                let targetElement = e.target;
+                if (targetElement.closest("[data-quantity-plus]") || targetElement.closest("[data-quantity-minus]")) {
+                    const valueElement = targetElement.closest("[data-quantity]").querySelector("[data-quantity-value]");
+                    let value = parseInt(valueElement.value);
+                    if (targetElement.hasAttribute("data-quantity-plus")) {
+                        value++;
+                        if (+valueElement.dataset.quantityMax && +valueElement.dataset.quantityMax < value) value = valueElement.dataset.quantityMax;
+                    } else {
+                        --value;
+                        if (+valueElement.dataset.quantityMin) {
+                            if (+valueElement.dataset.quantityMin > value) value = valueElement.dataset.quantityMin;
+                        } else if (value < 1) value = 1;
+                    }
+                    targetElement.closest("[data-quantity]").querySelector("[data-quantity-value]").value = value;
+                }
+            }));
+        }
         __webpack_require__(958);
         const inputMasks = document.querySelectorAll("input");
         if (inputMasks.length) inputMasks.forEach((input => {
@@ -6935,18 +6954,38 @@
             return api;
         }
         function rangeInit() {
-            const priceSlider = document.querySelector("#range");
-            if (priceSlider) {
-                priceSlider.getAttribute("data-from");
-                priceSlider.getAttribute("data-to");
-                initialize(priceSlider, {
-                    start: 0,
-                    connect: [ true, false ],
+            const slider = document.getElementById("sliderPrice");
+            if (slider) {
+                const rangeMin = parseInt(slider.dataset.min);
+                const rangeMax = parseInt(slider.dataset.max);
+                const step = parseInt(slider.dataset.step);
+                const filterInputs = document.querySelectorAll("input.range__input");
+                initialize(slider, {
+                    start: [ rangeMin, rangeMax ],
+                    connect: true,
+                    step,
+                    tooltips: [ true, true ],
                     range: {
-                        min: [ 0 ],
-                        max: [ 2e5 ]
+                        min: rangeMin,
+                        max: rangeMax
+                    },
+                    format: {
+                        from: function(value) {
+                            return parseInt(value);
+                        },
+                        to: function(value) {
+                            return parseInt(value);
+                        }
                     }
                 });
+                slider.noUiSlider.on("update", ((values, handle) => {
+                    filterInputs[handle].value = values[handle];
+                }));
+                filterInputs.forEach(((input, indexInput) => {
+                    input.addEventListener("change", (() => {
+                        slider.noUiSlider.setHandle(indexInput, input.value);
+                    }));
+                }));
             }
         }
         rangeInit();
@@ -13170,10 +13209,12 @@
         }
         function asideScroll() {
             var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-            if (windowWidth < 1386) {
+            if (windowWidth < 991.98) {
                 addWindowScrollEvent = true;
                 const header = document.querySelector(".catalog__top");
                 if (header) {
+                    const blockOffsetTop = header.getBoundingClientRect().top + window.scrollY;
+                    header.dataset.scroll = blockOffsetTop;
                     const headerShow = header.hasAttribute("data-scroll-show");
                     const headerShowTimer = header.dataset.scrollShow ? header.dataset.scrollShow : 500;
                     const startPoint = header.dataset.scroll ? header.dataset.scroll : 1;
@@ -13183,16 +13224,16 @@
                         const scrollTop = window.scrollY;
                         clearTimeout(timer);
                         if (scrollTop >= startPoint) {
-                            !header.classList.contains("_aside-scroll") ? header.classList.add("_aside-scroll") : null;
+                            !header.classList.contains("_aside-scroll") && header.classList.add("_aside-scroll");
                             if (headerShow) {
-                                if (scrollTop > scrollDirection) header.classList.contains("_aside-show") ? header.classList.remove("_aside-show") : null; else !header.classList.contains("_header-show") ? header.classList.add("_aside-show") : null;
+                                if (scrollTop > scrollDirection) header.classList.contains("_aside-show") && header.classList.remove("_aside-show"); else !header.classList.contains("_aside-show") && header.classList.add("_aside-show");
                                 timer = setTimeout((() => {
-                                    !header.classList.contains("_aside-show") ? header.classList.add("_aside-show") : null;
+                                    !header.classList.contains("_aside-show") && header.classList.add("_aside-show");
                                 }), headerShowTimer);
                             }
                         } else {
-                            header.classList.contains("_aside-scroll") ? header.classList.remove("_aside-scroll") : null;
-                            if (headerShow) header.classList.contains("_aside-show") ? header.classList.remove("_aside-show") : null;
+                            header.classList.contains("_aside-scroll") && header.classList.remove("_aside-scroll");
+                            if (headerShow) header.classList.contains("_aside-show") && header.classList.remove("_aside-show");
                         }
                         scrollDirection = scrollTop <= 0 ? 0 : scrollTop;
                     }));
@@ -13605,6 +13646,7 @@
             autoHeight: false
         });
         formSubmit();
+        formQuantity();
         headerScroll();
         asideScroll();
         digitsCounter();
