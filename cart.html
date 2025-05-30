@@ -2,7 +2,7 @@
 <html lang="uk">
 
 <head>
-	<title>Контакти</title>
+	<title>Вміст кошика</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
@@ -496,124 +496,175 @@
 			</div>
 		</header>
 		<main class="menu-dark">
-			<section class="contacts">
-				<div class="contacts__container">
-					<div class="contacts__wrapper">
-						<div class="contacts__content">
-							<div class="contacts__title h2">контакти</div>
-							<div class="contacts__text text-s">Якщо у вас виникли запитання щодо вибору стелажа, умов доставки або оформлення замовлення — сміливо звертайтесь до нас. Ми завжди готові допомогти вам знайти оптимальне рішення для дому, складу чи офісу.</div>
-							<div class="contacts__box">
-								<a href="" class="contacts__email h5">info@holdex.ua</a>
-								<div class="contacts__text text-s">Пишіть щодо оплати, повернень, технічних питань або співпраці.</div>
-							</div>
-							<div class="contacts__info">
-								<div class="contacts__inner">
-									<a href="tel:+380961234567" class="contacts__link h5">+380 (96) 123-45-67</a>
-									<a href="tel:+380991234567" class="contacts__lin h5">+380 (99) 123-45-67</a>
-									<a href="tel:+380679876543" class="contacts__link h5">+380 (67) 987-65-43</a>
+			<section class="page-cart">
+				<div class="page-cart__container">
+					<h3 class="page-cart__title-top">вміст кошика</h3>
+					<div class="page-cart__wrapper">
+						<div class="page-cart__main">
+							<div class="page-cart__head">
+								<div class="page-cart__left">
+									<div class="page-cart__subtitle">Товар</div>
 								</div>
-								<div class="contacts__text text-s">Для швидких питань щодо замовлень, доставки чи консультації.</div>
-							</div>
-							<div class="contacts__socials socials mod">
-								<a href="" class="socials__link _icon-telegram"></a>
-								<a href="" class="socials__link _icon-viber"></a>
-								<a href="" class="socials__link _icon-whatsapp"></a>
-							</div>
-						</div>
-						<!-- TODO: удалить атрибут data-dev и data-popup-message. Используется для отображения pop-up уведомления об успешном действии -->
-						<form action="" data-dev data-popup-message="#popup-success" class="contacts__form form">
-							<div class="form__title h3">Заповніть форму і ми звʼяжемося з вами найближчим часом</div>
-							<div class="form__wrap">
-								<div class="form__item">
-									<input type="text" name="name" class="form__input" placeholder="Імʼя*" data-required="name" data-error="Поле є обовʼязковим для заповнення" data-validate>
-								</div>
-								<div class="form__item">
-									<input type="tel" name="phone" class="form__input phone-mask" placeholder="+38(___)-___-__-__*" data-required="phone" data-error="Перевірте номер телефону і спробуйте ще раз" data-validate>
+								<div class="page-cart__right">
+									<div class="page-cart__subtitle">Кількість</div>
+									<div class="page-cart__subtitle">Загальна ціна</div>
 								</div>
 							</div>
-							<button type="submit" class="form__button btn _icon-arrow">надіслати</button>
-						</form>
-					</div>
-				</div>
-			</section>
-			<section class="address-block">
-				<div class="address-block__container">
-					<div class="address-block__wrapper">
-						<div class="address-block__image lazy_image">
-							<picture>
-								<source media="(max-width: 767.98px)" data-srcset="img/main/map-bg-mobile.webp" />
-								<source media="(max-width: 991.98px)" data-rcset="img/main/map-bg-tablet.webp" />
-								<source media="(min-width: 991.98px)" data-srcset="img/main/map-bg-desktop.webp" />
-								<img data-src="img/main/map-bg-desktop.webp" alt="" />
-							</picture>
+							<div class="page-cart__list">
+								<div class="page-cart__item">
+									<div class="page-cart__inner">
+										<a href="" class="page-cart__image lazy_image">
+											<img data-src="img/products/10.webp" alt="">
+										</a>
+										<div class="page-cart__descr">
+											<a href="" class="page-cart__title h6">Складський проф. стелаж "МаксПро 300"</a>
+											<div class="product__copy">
+												<div class="product__code--wrap text-xs">
+													<div class="product__code--text">Код: </div>
+													<div class="product__code">B180160404051</div>
+												</div>
+												<button type="button" class="product__icon _icon-png-copy"></button>
+											</div>
+										</div>
+									</div>
+									<div class="page-cart__box">
+										<div class="page-cart__box--left">
+											<div data-quantity class="page-cart__quantity quantity">
+												<button data-quantity-minus type="button" class="quantity__button">-</button>
+												<div class="quantity__input">
+													<input data-quantity-value data-quantity-max='50' autocomplete="off" type="number" name="count" readonly value="1">
+												</div>
+												<button data-quantity-plus type="button" class="quantity__button">+</button>
+											</div>
+										</div>
+										<div class="page-cart__box--right">
+											<div class="page-cart__price price price--mod">
+												<div class="price__old text-xs">3600 грн</div>
+												<div class="price__current text-s">2850 грн</div>
+											</div><button type="button" class="page-cart__button _icon-close"></button>
+										</div>
+									</div>
+								</div>
+								<div class="page-cart__item">
+									<div class="page-cart__inner">
+										<a href="" class="page-cart__image lazy_image">
+											<img data-src="img/products/10.webp" alt="">
+										</a>
+										<div class="page-cart__descr">
+											<a href="" class="page-cart__title h6">Складський проф. стелаж "МаксПро 300"</a>
+											<div class="product__copy">
+												<div class="product__code--wrap text-xs">
+													<div class="product__code--text">Код: </div>
+													<div class="product__code">BC180150603052A</div>
+												</div>
+												<button type="button" class="product__icon _icon-png-copy"></button>
+											</div>
+										</div>
+									</div>
+									<div class="page-cart__box">
+										<div class="page-cart__box--left">
+											<div data-quantity class="page-cart__quantity quantity">
+												<button data-quantity-minus type="button" class="quantity__button">-</button>
+												<div class="quantity__input">
+													<input data-quantity-value data-quantity-max='50' autocomplete="off" type="number" name="count" readonly value="1">
+												</div>
+												<button data-quantity-plus type="button" class="quantity__button">+</button>
+											</div>
+										</div>
+										<div class="page-cart__box--right">
+											<div class="page-cart__price price price--mod">
+												<div class="price__old text-xs">3600 грн</div>
+												<div class="price__current text-s">2850 грн</div>
+											</div><button type="button" class="page-cart__button _icon-close"></button>
+										</div>
+									</div>
+								</div>
+								<div class="page-cart__item">
+									<div class="page-cart__inner">
+										<a href="" class="page-cart__image lazy_image">
+											<img data-src="img/products/10.webp" alt="">
+										</a>
+										<div class="page-cart__descr">
+											<a href="" class="page-cart__title h6">Складський проф. стелаж "МаксПро 300"</a>
+											<div class="product__copy">
+												<div class="product__code--wrap text-xs">
+													<div class="product__code--text">Код: </div>
+													<div class="product__code">BC180150603052A</div>
+												</div>
+												<button type="button" class="product__icon _icon-png-copy"></button>
+											</div>
+										</div>
+									</div>
+									<div class="page-cart__box">
+										<div class="page-cart__box--left">
+											<div data-quantity class="page-cart__quantity quantity">
+												<button data-quantity-minus type="button" class="quantity__button">-</button>
+												<div class="quantity__input">
+													<input data-quantity-value data-quantity-max='50' autocomplete="off" type="number" name="count" readonly value="1">
+												</div>
+												<button data-quantity-plus type="button" class="quantity__button">+</button>
+											</div>
+										</div>
+										<div class="page-cart__box--right">
+											<div class="page-cart__price price price--mod">
+												<div class="price__old text-xs">3600 грн</div>
+												<div class="price__current text-s">2850 грн</div>
+											</div><button type="button" class="page-cart__button _icon-close"></button>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="address-block__content">
-							<div class="address-block__title h2">адреса</div>
-							<div class="address-block__info">м. Київ, вул. Стелажна, 10, оф. 305</div>
-							<div class="address-block__text">Пн-Пт: 9:00 – 18:00 <br> Сб-Нд: вихідний</div>
+						<div class="page-cart__info info-cart">
+							<div class="info-cart__title">Подарунковий сертифікат або промо-код</div>
+							<form action="#" class="info-cart__form search__form">
+								<input type="text" name="promo" placeholder="Промокод" class="search__input search__input--mod">
+								<div class="search__text search__text--done text-xs _icon-check show">Промокод застосовано</div>
+								<div class="search__text search__text--error text-xs _icon-close">Промокод не є дійсним або написаний неправильно</div>
+								<button type="submit" class="search__button search__button--mod btn-white">додати</button>
+								<button type="button" class="search__clear _icon-close"></button>
+							</form>
+							<div class="info-cart__wrap">
+								<ul class="info-cart__list">
+									<li class="info-cart__item">
+										<div class="info-cart__data">Кількість товару:</div>
+										<div class="info-cart__data">3 шт.</div>
+									</li>
+									<li class="info-cart__item">
+										<div class="info-cart__data">Сума:</div>
+										<div class="info-cart__data">4 728 грн</div>
+									</li>
+									<li class="info-cart__item">
+										<div class="info-cart__data">Знижка:</div>
+										<div class="info-cart__data">-340 грн</div>
+									</li>
+								</ul>
+								<div class="info-cart__total">
+									<div class="info-cart__box">
+										<div class="info-cart__text h3">загалом</div>
+									</div>
+									<div class="info-cart__box">
+										<div class="info-cart__old">7600 грн</div>
+										<div class="info-cart__text h3">6500 грн</div>
+									</div>
+								</div>
+							</div>
+							<a href="" class="info-cart__button btn _icon-arrow">оформити замовлення</a>
 						</div>
 					</div>
-				</div>
-			</section>
-			<section class="faq-block">
-				<div class="faq-block__container">
-					<div class="faq-block__title h2">Часті питання</div>
-					<div data-spollers data-one-spoller class="faq-block__spollers spollers">
-						<details class="spollers__item">
-							<summary class="spollers__title h5 _icon-arrow_down">Чи можу я змінити або скасувати замовлення?</summary>
-							<div class="spollers__body">Якщо замовлення ще не відправлене, зверніться до нашої підтримки, і ми допоможемо внести зміни.</div>
-						</details>
-						<details class="spollers__item">
-							<summary class="spollers__title h5 _icon-arrow_down">Коли моє замовлення буде доставлене?</summary>
-							<div class="spollers__body">Якщо замовлення ще не відправлене, зверніться до нашої підтримки, і ми допоможемо внести зміни.</div>
-						</details>
-						<details class="spollers__item">
-							<summary class="spollers__title h5 _icon-arrow_down">Як я можу відстежити своє замовлення?</summary>
-							<div class="spollers__body">Якщо замовлення ще не відправлене, зверніться до нашої підтримки, і ми допоможемо внести зміни.</div>
-						</details>
-						<details class="spollers__item">
-							<summary class="spollers__title h5 _icon-arrow_down">Що робити, якщо я отримав(ла) не той товар або бракований продукт?</summary>
-							<div class="spollers__body">Якщо замовлення ще не відправлене, зверніться до нашої підтримки, і ми допоможемо внести зміни.</div>
-						</details>
-					</div>
-				</div>
-			</section>
-			<section class="content">
-				<div class="content__container">
-					<div data-simplebar class="content__wrapper">
-						<div class="content__body">
-							<p>Компанія Holdex – це лідер у виробництві металевих стелажів в Україні. Ми пропонуємо надійні та довговічні рішення для зберігання, які підходять для складів, магазинів, офісів, гаражів та домашнього використання. Наші стелажі відрізняються високою міцністю, адаптивністю та сучасним дизайном, що дозволяє ефективно організувати простір будь-якого приміщення.</p>
-							<h1>Чому обирають Holdex?</h1>
-							<ul>
-								<li>
-									<p><b>Якість та міцність</b></p>
-									<p>Ми використовуємо лише перевірені матеріали, що забезпечують довговічність та витримку великих навантажень.</p>
-								</li>
-								<li>
-									<p><b>Власне виробництво</b></p>
-									<p>Вся продукція виготовляється на наших виробничих потужностях, що дозволяє контролювати кожен етап створення стелажів.</p>
-								</li>
-							</ul>
-							<p>Компанія Holdex – це лідер у виробництві металевих стелажів в Україні. Ми пропонуємо надійні та довговічні рішення для зберігання, які підходять для складів, магазинів, офісів, гаражів та домашнього використання. Наші стелажі відрізняються високою міцністю, адаптивністю та сучасним дизайном, що дозволяє ефективно організувати простір будь-якого приміщення.</p>
-							<h1>Чому обирають Holdex?</h1>
-							<ul>
-								<li>
-									<p><b>Якість та міцність</b></p>
-									<p>Ми використовуємо лише перевірені матеріали, що забезпечують довговічність та витримку великих навантажень.</p>
-								</li>
-								<li>
-									<p><b>Власне виробництво</b></p>
-									<p>Вся продукція виготовляється на наших виробничих потужностях, що дозволяє контролювати кожен етап створення стелажів.</p>
-								</li>
-							</ul>
+					<div class="page-cart__fix fix-cart">
+						<div class="fix-cart__wrapper">
+							<div class="fix-cart__row">
+								<div class="fix-cart__inner">
+									<div class="fix-cart__title h3">загалом</div>
+								</div>
+								<div class="fix-cart__inner">
+									<div class="fix-cart__old">7600 грн</div>
+									<div class="fix-cart__title h3">6500 грн</div>
+								</div>
+							</div>
+							<a href="" class="fix-cart__button btn btn-ternary _icon-arrow">оформити замовлення</a>
 						</div>
-					</div>
-				</div>
-			</section>
-			<section class="info-socials">
-				<div class="info-socials__container">
-					<div class="info-socials__main">
-						<a href="" data-popup="#popup" class="info-socials__button _icon-phone"></a>
 					</div>
 				</div>
 			</section>

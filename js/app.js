@@ -13637,6 +13637,40 @@
                 }
             }));
         }));
+        var pageCart = document.querySelector(".page-cart__list");
+        if (pageCart) {
+            function relocateCartItems() {
+                const cartItems = document.querySelectorAll(".page-cart__item");
+                const breakpoint = 767.98;
+                if (cartItems.length === 0) return;
+                cartItems.forEach((item => {
+                    const descr = item.querySelector(".page-cart__descr");
+                    const box = item.querySelector(".page-cart__box");
+                    if (!box || !descr) return;
+                    if (window.innerWidth <= breakpoint) {
+                        if (box.parentNode !== descr) descr.appendChild(box);
+                    } else if (box.parentNode !== item) item.appendChild(box);
+                }));
+            }
+            window.addEventListener("DOMContentLoaded", relocateCartItems);
+            window.addEventListener("resize", relocateCartItems);
+        }
+        var productPage = document.querySelector(".fix-cart");
+        var productSize = document.querySelector(".page-cart__title-top");
+        var header = document.querySelector(".header");
+        if (productPage && productSize && header) {
+            function handleScroll() {
+                var screenWidth = window.innerWidth;
+                var headerHeight = header.offsetHeight;
+                var productSizeRect = productSize.getBoundingClientRect();
+                var isVisible;
+                if (screenWidth > 991.98) isVisible = productSizeRect.top >= 0 && productSizeRect.bottom <= window.innerHeight; else isVisible = !(productSizeRect.bottom - headerHeight < 0);
+                productPage.classList.toggle("active", !isVisible);
+            }
+            window.addEventListener("scroll", handleScroll);
+            window.addEventListener("resize", handleScroll);
+            handleScroll();
+        }
         window["FLS"] = false;
         menuInit();
         menuFilters();
