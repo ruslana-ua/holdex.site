@@ -1818,6 +1818,9 @@ body::after {
   padding-bottom: 15px;
   border-bottom: 1px solid var(--light-secondary)
 }
+#popup-quick-order .success-popup__top {
+  border: none
+}
 .success-popup__top--mod {
   padding-bottom: 50px
 }
