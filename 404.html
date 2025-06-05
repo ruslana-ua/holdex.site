@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250604111033">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250605184021">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
@@ -2048,7 +2048,8 @@
 						<div class="success-popup__title--top h3">ШВИДКА ПОКУПКА</div>
 						<button data-close type="button" class="popup__close button-close _icon-close"></button>
 					</div>
-					<div class="popup__order cart-popup">
+					<!-- TODO: удалить атрибут data-dev и data-popup-message. Используется для отображения pop-up уведомления об успешном действии -->
+					<form data-dev data-popup-message="#popup-success" class="popup__order cart-popup">
 						<div class="cart-popup__list cart-popup__list--mod">
 							<div class="page-cart__inner page-cart__inner--mod">
 								<a href="" class="page-cart__image page-cart__image--mod lazy_image">
@@ -2090,9 +2091,9 @@
 							</div>
 						</div>
 						<div class="cart-popup__bottom">
-							<a href="" class="cart-popup__button cart-popup__button--mod btn _icon-arrow">придбати</a>
+							<button type="submit" class="cart-popup__button cart-popup__button--mod btn _icon-arrow">придбати</и>
 						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -2179,7 +2180,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="js/app.min.js?_v=20250604111033"></script>
+	<script src="js/app.min.js?_v=20250605184021"></script>
 </body>
 
 </html>

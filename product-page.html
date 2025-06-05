@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250604111033">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250605184021">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
@@ -501,38 +501,44 @@
 					<div class="product-page__wrapper">
 						<div class="product-page__gallery gallery">
 							<div class="gallery__inner">
-								<div class="gallery__slider swiper">
-									<div data-gallery class="gallery__wrapper swiper-wrapper">
-										<a href="img/products/28.webp" class="gallery__slide swiper-slide">
+								<div class="gallery__slider main-gallery__slider swiper">
+									<div data-popup="#popup-gallery" class="gallery__wrapper swiper-wrapper">
+										<div class="gallery__slide swiper-slide">
 											<img data-src="img/products/28.webp" alt="" class="gallery__preview">
-										</a>
-										<a href="img/products/29.webp" class="gallery__slide swiper-slide">
+										</div>
+										<div class="gallery__slide swiper-slide">
 											<img data-src="img/products/29.webp" alt="" class="gallery__preview">
-										</a>
-										<a href="img/products/30.webp" class="gallery__slide swiper-slide">
+										</div>
+										<div class="gallery__slide swiper-slide">
 											<img data-src="img/products/30.webp" alt="" class="gallery__preview">
-										</a>
-										<a href="img/products/31.webp" class="gallery__slide swiper-slide">
+										</div>
+										<div class="gallery__slide swiper-slide">
 											<img data-src="img/products/31.webp" alt="" class="gallery__preview">
-										</a>
-										<a href="img/products/32.webp" class="gallery__slide swiper-slide">
+										</div>
+										<div class="gallery__slide swiper-slide">
 											<img data-src="img/products/32.webp" alt="" class="gallery__preview">
-										</a>
-										<a href="img/products/33.webp" class="gallery__slide swiper-slide">
+										</div>
+										<div class="gallery__slide swiper-slide">
 											<img data-src="img/products/33.webp" alt="" class="gallery__preview">
-										</a>
-										<a href="img/products/34.webp" class="gallery__slide swiper-slide">
+										</div>
+										<div class="gallery__slide swiper-slide">
 											<img data-src="img/products/34.webp" alt="" class="gallery__preview">
-										</a>
+										</div>
+										<div class="gallery__slide swiper-slide">
+											<img data-src="img/products/30.webp" alt="" class="gallery__preview">
+										</div>
+										<div class="gallery__slide swiper-slide">
+											<img data-src="img/products/31.webp" alt="" class="gallery__preview">
+										</div>
 									</div>
 									<div class="swiper-pagination"></div>
-									<div class="gallery__swiper-nav swiper-nav">
+									<div class="gallery__swiper-nav gallery__swiper-nav--mod swiper-nav">
 										<button type="button" class="swiper-nav__button swiper-button-prev _icon-arrow"></button>
 										<button type="button" class="swiper-nav__button swiper-button-next _icon-arrow"></button>
 									</div>
 									<div class="gallery__label _icon-png-filter">Гарантія 24 міс</div>
 								</div>
-								<div class="gallery__thumbs swiper">
+								<div class="gallery__thumbs gallery__thumbs--mod main-gallery__thumbs swiper">
 									<div class="gallery__wrapper swiper-wrapper">
 										<div class="gallery__slide swiper-slide">
 											<img src="img/products/28.webp" alt="">
@@ -555,7 +561,14 @@
 										<div class="gallery__slide swiper-slide">
 											<img src="img/products/34.webp" alt="">
 										</div>
+										<div class="gallery__slide swiper-slide">
+											<img src="img/products/30.webp" alt="">
+										</div>
+										<div class="gallery__slide swiper-slide">
+											<img src="img/products/31.webp" alt="">
+										</div>
 									</div>
+									<div class="swiper-scrollbar"></div>
 								</div>
 							</div>
 						</div>
@@ -563,7 +576,7 @@
 							<div class="product-info__tab">
 								<div data-da=".product-page__wrapper,1291.98,0" class="product-info__inner">
 									<div class="product-info__top">
-										<a href="" class="product-info__rating rating anchorn">
+										<a href="#review" class="product-info__rating rating anchorn">
 											<div class="rating__block">
 												<div class="rating__star _icon-star"></div>
 												<div class="rating__star _icon-star"></div>
@@ -610,10 +623,12 @@
 								</div>
 							</div>
 							<div class="product-info__actions product-actions">
+								<!-- Если товар уже добавлен в список желаемого, к product-actions__button добавляется класс active -->
 								<button type="button" data-popup="#popup-add-favorite" class="product-actions__button active">
 									<span class="product-actions__icon _icon-favorite"></span>
 									<span class="product-actions__text">Додати до переліку побажань</span>
 								</button>
+								<!-- Если товар уже добавлен в список сравнения, к product-actions__button добавляется класс active -->
 								<button type="button" data-popup="#popup-add-comparison" class="product-actions__button active">
 									<span class="product-actions__icon _icon-compare"></span>
 									<span class="product-actions__text">Додати до списку порівняння</span></button>
@@ -635,11 +650,15 @@
 									</div>
 								</details>
 								<details class="spollers__item">
+									<summary class="spollers__title _icon-arrow_down">Повернення та обмін</summary>
+									<div class="spollers__body">Якщо замовлення ще не відправлене, зверніться до нашої підтримки, і ми допоможемо внести зміни.</div>
+								</details>
+								<details class="spollers__item">
 									<summary class="spollers__title _icon-arrow_down">Переваги</summary>
 									<div class="spollers__body">Якщо замовлення ще не відправлене, зверніться до нашої підтримки, і ми допоможемо внести зміни.</div>
 								</details>
 								<details class="spollers__item">
-									<summary class="spollers__title _icon-arrow_down">Повернення та обмін</summary>
+									<summary class="spollers__title _icon-arrow_down">Гарантія</summary>
 									<div class="spollers__body">Якщо замовлення ще не відправлене, зверніться до нашої підтримки, і ми допоможемо внести зміни.</div>
 								</details>
 							</div>
@@ -820,7 +839,7 @@
 					</div>
 				</div>
 			</section>
-			<section class="comment-block">
+			<section id="review" class="comment-block">
 				<div class="comment-block__container">
 					<div class="comment-block__title h2">відгуки</div>
 					<div class="comment-block__wrapper">
@@ -1613,7 +1632,8 @@
 						<div class="success-popup__title--top h3">ШВИДКА ПОКУПКА</div>
 						<button data-close type="button" class="popup__close button-close _icon-close"></button>
 					</div>
-					<div class="popup__order cart-popup">
+					<!-- TODO: удалить атрибут data-dev и data-popup-message. Используется для отображения pop-up уведомления об успешном действии -->
+					<form data-dev data-popup-message="#popup-success" class="popup__order cart-popup">
 						<div class="cart-popup__list cart-popup__list--mod">
 							<div class="page-cart__inner page-cart__inner--mod">
 								<a href="" class="page-cart__image page-cart__image--mod lazy_image">
@@ -1655,9 +1675,9 @@
 							</div>
 						</div>
 						<div class="cart-popup__bottom">
-							<a href="" class="cart-popup__button cart-popup__button--mod btn _icon-arrow">придбати</a>
+							<button type="submit" class="cart-popup__button cart-popup__button--mod btn _icon-arrow">придбати</и>
 						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -1804,7 +1824,128 @@
 			</div>
 		</div>
 	</div>
-	<script src="js/app.min.js?_v=20250604111033"></script>
+	<div id="popup-gallery" aria-hidden="true" class="popup popup_gallery">
+		<div class="popup__wrapper">
+			<div class="popup__content popup__content--gallery mod">
+				<div class="popup__gallery gallery-popup">
+					<div class="gallery-popup__top">
+						<div class="gallery-popup__inner">
+							<div class="gallery-popup__title h4">Стелаж "Домашній Комфорт" 1800x750x350 мм, 200 кг/полиця, 5 полиць, металевий, МДФ</div>
+							<div class="gallery-popup__copy product__copy">
+								<div class="product__code--wrap">
+									<div class="product__code--text">Код: </div>
+									<div class="product__code">BC180150603052A</div>
+								</div>
+								<button type="button" class="product__icon _icon-png-copy"></button>
+							</div>
+						</div>
+						<button data-close type="button" class="popup__close button-close _icon-close"></button>
+					</div>
+					<div class="gallery-popup__gallery gallery">
+						<div class="gallery__inner">
+							<div class="gallery__slider swiper product-gallery__slider">
+								<div class="gallery__wrapper swiper-wrapper">
+									<div class="gallery__slide swiper-slide">
+										<div class="swiper-zoom-container">
+											<img data-src="img/products/28.webp" alt="" class="gallery__preview">
+										</div>
+									</div>
+									<div class="gallery__slide swiper-slide">
+										<div class="swiper-zoom-container">
+											<img data-src="img/products/29.webp" alt="" class="gallery__preview">
+										</div>
+									</div>
+									<div class="gallery__slide swiper-slide">
+										<div class="swiper-zoom-container">
+											<img data-src="img/products/30.webp" alt="" class="gallery__preview">
+										</div>
+									</div>
+									<div class="gallery__slide swiper-slide">
+										<div class="swiper-zoom-container">
+											<img data-src="img/products/31.webp" alt="" class="gallery__preview">
+										</div>
+									</div>
+									<div class="gallery__slide swiper-slide">
+										<div class="swiper-zoom-container">
+											<img data-src="img/products/32.webp" alt="" class="gallery__preview">
+										</div>
+									</div>
+									<div class="gallery__slide swiper-slide">
+										<div class="swiper-zoom-container">
+											<img data-src="img/products/33.webp" alt="" class="gallery__preview">
+										</div>
+									</div>
+									<div class="gallery__slide swiper-slide">
+										<div class="swiper-zoom-container">
+											<img data-src="img/products/34.webp" alt="" class="gallery__preview">
+										</div>
+									</div>
+									<div class="gallery__slide swiper-slide">
+										<div class="swiper-zoom-container">
+											<img data-src="img/products/30.webp" alt="" class="gallery__preview">
+										</div>
+									</div>
+									<div class="gallery__slide swiper-slide">
+										<div class="swiper-zoom-container">
+											<img data-src="img/products/31.webp" alt="" class="gallery__preview">
+										</div>
+									</div>
+								</div>
+								<div class="gallery__swiper-nav gallery__swiper-nav--gallery swiper-nav">
+									<button type="button" class="swiper-nav__button swiper-button-prev _icon-arrow"></button>
+									<button id="zoom-btn" class="swiper-nav__zoom _icon-png-zoom"></button>
+									<button type="button" class="swiper-nav__button swiper-button-next _icon-arrow"></button>
+								</div>
+							</div>
+							<div class="gallery__thumbs swiper product-gallery__thumbs">
+								<div class="gallery__wrapper swiper-wrapper">
+									<div class="gallery__slide swiper-slide">
+										<img src="img/products/28.webp" alt="">
+									</div>
+									<div class="gallery__slide swiper-slide">
+										<img src="img/products/29.webp" alt="">
+									</div>
+									<div class="gallery__slide swiper-slide">
+										<img src="img/products/30.webp" alt="">
+									</div>
+									<div class="gallery__slide swiper-slide">
+										<img src="img/products/31.webp" alt="">
+									</div>
+									<div class="gallery__slide swiper-slide">
+										<img src="img/products/32.webp" alt="">
+									</div>
+									<div class="gallery__slide swiper-slide">
+										<img src="img/products/33.webp" alt="">
+									</div>
+									<div class="gallery__slide swiper-slide">
+										<img src="img/products/34.webp" alt="">
+									</div>
+									<div class="gallery__slide swiper-slide">
+										<img src="img/products/30.webp" alt="">
+									</div>
+									<div class="gallery__slide swiper-slide">
+										<img src="img/products/31.webp" alt="">
+									</div>
+								</div>
+								<div class="swiper-scrollbar"></div>
+							</div>
+						</div>
+						<div class="gallery-popup__actions">
+							<div class="gallery-popup__price price">
+								<div class="price__old h5">3600 грн</div>
+								<div class="price__current h4">2850 грн</div>
+							</div>
+							<div class="gallery-popup__buttons">
+								<button type="button" data-popup="#popup-add-cart" class="product__button _icon-cart"></button>
+								<button type="button" data-popup="#popup-quick-order" class="product__buy product__buy--mod btn _icon-arrow">купити в 1 клік</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/app.min.js?_v=20250605184021"></script>
 </body>
 
 </html>
