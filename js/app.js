@@ -12974,11 +12974,21 @@
                         },
                         668: {
                             slidesPerView: 2.15,
-                            slidesPerGroup: 2
+                            slidesPerGroup: 2,
+                            freeMode: {
+                                enabled: false,
+                                sticky: true,
+                                momentumBounce: false
+                            }
                         },
                         992: {
                             slidesPerView: 2.5,
-                            slidesPerGroup: 2
+                            slidesPerGroup: 2,
+                            freeMode: {
+                                enabled: true,
+                                sticky: false,
+                                momentumBounce: false
+                            }
                         },
                         1386: {
                             slidesPerView: 3.99,
@@ -12992,22 +13002,12 @@
             function toggleBlockSlider() {
                 const screenWidth = window.innerWidth;
                 if (blockSlider) if (screenWidth <= 767.98 && blockSwiper === null) blockSwiper = new swiper_core_Swiper(blockSlider, {
-                    modules: [ freeMode, Mousewheel, Scrollbar ],
+                    modules: [ Scrollbar ],
                     observer: true,
                     observeParents: true,
                     speed: 800,
                     slidesPerView: 1.13,
                     spaceBetween: 20,
-                    freeMode: {
-                        enabled: true,
-                        sticky: false,
-                        momentumBounce: false
-                    },
-                    mousewheel: {
-                        enabled: true,
-                        sensitivity: .2,
-                        forceToAxis: true
-                    },
                     scrollbar: {
                         el: ".swiper-scrollbar",
                         draggable: true
@@ -13024,22 +13024,12 @@
             function toggleAdvantagesSlider() {
                 const screenWidth = window.innerWidth;
                 if (advantagesSlider) if (screenWidth <= 767.98 && advantagesSwiper === null) advantagesSwiper = new swiper_core_Swiper(advantagesSlider, {
-                    modules: [ freeMode, Mousewheel, Scrollbar ],
+                    modules: [ Scrollbar ],
                     observer: true,
                     observeParents: true,
                     speed: 800,
                     slidesPerView: 1.08,
                     spaceBetween: 20,
-                    freeMode: {
-                        enabled: true,
-                        sticky: false,
-                        momentumBounce: false
-                    },
-                    mousewheel: {
-                        enabled: true,
-                        sensitivity: .2,
-                        forceToAxis: true
-                    },
                     scrollbar: {
                         el: ".swiper-scrollbar",
                         draggable: true
@@ -13143,11 +13133,27 @@
                     el: ".swiper-pagination",
                     clickable: true
                 },
+                breakpoints: {
+                    0: {
+                        freeMode: {
+                            enabled: false,
+                            sticky: true,
+                            momentumBounce: false
+                        }
+                    },
+                    992: {
+                        freeMode: {
+                            enabled: true,
+                            sticky: false,
+                            momentumBounce: false
+                        }
+                    }
+                },
                 on: {}
             });
             if (document.querySelector(".our-team__slider")) {
                 new swiper_core_Swiper(".our-team__slider", {
-                    modules: [ Scrollbar, Navigation, Autoplay, EffectCoverflow ],
+                    modules: [ Scrollbar, Navigation, Autoplay, EffectCoverflow, Pagination ],
                     observer: true,
                     observeParents: true,
                     slidesPerView: "auto",
@@ -13166,9 +13172,14 @@
                         prevEl: ".swiper-button-prev",
                         nextEl: ".swiper-button-next"
                     },
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true
+                    },
                     breakpoints: {
                         0: {
-                            initialSlide: 2,
+                            slidesPerView: 1,
+                            initialSlide: 1,
                             spaceBetween: 10
                         },
                         768: {
@@ -13240,7 +13251,12 @@
                                 }
                             },
                             768: {
-                                spaceBetween: 20
+                                spaceBetween: 20,
+                                freeMode: {
+                                    enabled: true,
+                                    sticky: false,
+                                    momentumBounce: false
+                                }
                             }
                         }
                     });
@@ -14642,26 +14658,6 @@
                 e.preventDefault();
             }
         }
-        const searchInputs = document.querySelectorAll(".search__input");
-        if (searchInputs) searchInputs.forEach((searchInput => {
-            const clearInputBtn = searchInput.closest(".search__form").querySelector(".search__clear");
-            if (searchInput && clearInputBtn) {
-                function clearInput() {
-                    searchInput.value = "";
-                    clearInputBtn.classList.remove("visible");
-                }
-                function updateClearButtonVisibility() {
-                    const inputValue = searchInput.value.trim();
-                    if (inputValue) clearInputBtn.classList.add("visible"); else clearInputBtn.classList.remove("visible");
-                }
-                updateClearButtonVisibility();
-                searchInput.addEventListener("input", updateClearButtonVisibility);
-                searchInput.addEventListener("keydown", (event => {
-                    if (event.key === "Backspace") setTimeout(updateClearButtonVisibility, 0);
-                }));
-                clearInputBtn.addEventListener("click", clearInput);
-            }
-        }));
         function copyProductCode(button) {
             var productCopy = button.closest(".product__copy");
             var productCodeElement = productCopy.querySelector(".product__code");
@@ -14813,15 +14809,21 @@
             }));
         }));
         const filterItems = document.querySelectorAll(".filters__item");
-        if (filterItems) filterItems.forEach((filter => {
+        if (filterItems.length) filterItems.forEach((filter => {
             const searchInput = filter.querySelector(".filters__input");
             const filterButtons = filter.querySelectorAll(".filters__inner .ocf-value");
-            if (searchInput && filterButtons) searchInput.addEventListener("input", (function() {
+            const noResultsBlock = filter.querySelector(".filters__data--hidden");
+            if (searchInput) searchInput.addEventListener("input", (function() {
                 const searchTerm = this.value.trim().toLowerCase();
+                let matchesCount = 0;
                 filterButtons.forEach((button => {
                     const labelText = button.querySelector(".filters__label--text").textContent.trim().toLowerCase();
-                    if (labelText.includes(searchTerm)) button.classList.remove("_hidden"); else button.classList.add("_hidden");
+                    if (labelText.includes(searchTerm)) {
+                        button.classList.remove("_hidden");
+                        matchesCount++;
+                    } else button.classList.add("_hidden");
                 }));
+                if (noResultsBlock) if (matchesCount === 0) noResultsBlock.classList.remove("_hidden"); else noResultsBlock.classList.add("_hidden");
             }));
         }));
         document.querySelectorAll("[data-select]").forEach((function(dropDownWrapper) {

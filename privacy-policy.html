@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250605184021">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250610205155">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
@@ -33,13 +33,281 @@
 							</a>
 						</div>
 						<div class="header__right">
-							<div data-da=".header__wrapper,991.98,2" class="header__search search">
-								<form action="#" class="search__form">
+							<div data-da=".header__wrapper,991.98,2" class="header__search search-header search">
+								<form action="#" class="search__form search__form search__form--mod">
 									<input type="text" name="search" placeholder="Я шукаю..." class="search__input">
 									<div class="search__icon _icon-search"></div>
 									<button type="submit" class="search__button btn-white _icon-search"><span>Пошук</span></button>
-									<button type="button" class="search__clear _icon-close"></button>
+									<button type="button" class="search__clear search__clear--mod _icon-close"></button>
 								</form>
+								<div class="search-dropdown search__dropdown">
+									<div class="search-filter" data-simplebar="">
+
+
+										<!-- <div class="search-filter__row">
+									<div class="search-filter__item search-filter__item_1">
+										<div class="search-filter__title">сезон</div>
+										<div class="search-filter__items search-filter__items_1">
+											<a href="" class="search-filter__link _icon-winter">Зимові</a>
+											<a href="" class="search-filter__link _icon-summer">Літні</a>
+											<a href="" class="search-filter__link _icon-all-season">Всесезонні</a>
+										</div>
+									</div>
+									<div class="search-filter__item search-filter__item_2">
+										<div class="search-filter__title">ПОПУЛЯРНі ТИПОРОЗМІРи</div>
+										<div class="search-filter__items search-filter__items_3">
+											<a href="" class="search-filter__link">205/55 R16</a>
+											<a href="" class="search-filter__link">205/55 R16</a>
+											<a href="" class="search-filter__link">205/55 R16</a>
+											<a href="" class="search-filter__link">205/55 R16</a>
+											<a href="" class="search-filter__link">205/55 R16</a>
+											<a href="" class="search-filter__link">205/55 R16</a>
+											<a href="" class="search-filter__link">205/55 R16</a>
+											<a href="" class="search-filter__link">205/55 R16</a>
+											<a href="" class="search-filter__link">205/55 R16</a>
+											<a href="" class="search-filter__link">205/55 R16</a>
+											<a href="" class="search-filter__link">205/55 R16</a>
+											<a href="" class="search-filter__link">205/55 R16</a>
+											<a href="" class="search-filter__link">205/55 R16</a>
+											<a href="" class="search-filter__link">205/55 R16</a>
+											<a href="" class="search-filter__link">205/55 R16</a>
+											<a href="" class="search-filter__link">205/55 R16</a>
+											<a href="" class="search-filter__link">205/55 R16</a>
+										</div>
+									</div>
+									<div class="search-filter__item search-filter__item_3">
+										<div class="search-filter__title">ПОПУЛЯРні Бренди</div>
+										<div class="search-filter__items search-filter__items_2">
+											<a href="" class="search-filter__link">Bridgestone</a>
+											<a href="" class="search-filter__link">Bridgestone</a>
+											<a href="" class="search-filter__link">Michelin</a>
+											<a href="" class="search-filter__link">Bridgestone</a>
+											<a href="" class="search-filter__link">Michelin</a>
+											<a href="" class="search-filter__link">Cooper Tires</a>
+											<a href="" class="search-filter__link">Michelin</a>
+											<a href="" class="search-filter__link">Bridgestone</a>
+											<a href="" class="search-filter__link">Michelin</a>
+											<a href="" class="search-filter__link">Cooper Tires</a>
+										</div>
+									</div>
+									<div class="search-filter__item search-filter__item_4">
+										<div class="search-filter__title">Популярні Діаметри</div>
+										<div class="search-filter__items search-filter__items_3">
+											<a href="" class="search-filter__link">R17</a>
+											<a href="" class="search-filter__link">R17</a>
+											<a href="" class="search-filter__link">R17</a>
+											<a href="" class="search-filter__link">R17</a>
+											<a href="" class="search-filter__link">R17</a>
+											<a href="" class="search-filter__link">R17</a>
+											<a href="" class="search-filter__link">R17</a>
+											<a href="" class="search-filter__link">R17</a>
+											<a href="" class="search-filter__link">R17</a>
+										</div>
+									</div>
+								</div> -->
+									</div>
+									<div class="search-empty _hidden">
+										<div class="search-empty__icon">
+											<svg width="30" height="19" viewBox="0 0 30 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M14.9995 11.6123C17.8631 11.6123 20.4957 11.9835 22.8972 12.7259C25.3063 13.4759 27.5222 14.5441 29.5449 15.9305L29.5449 18.2941C28.7949 17.7487 27.8707 17.2373 26.7722 16.76C25.6813 16.2903 24.4805 15.8775 23.1699 15.5214C21.8669 15.1653 20.5184 14.885 19.1245 14.6805C17.7305 14.4835 16.3555 14.385 14.9995 14.385C13.1964 14.385 11.3669 14.5593 9.51083 14.9078C7.65477 15.2562 5.93128 15.7259 4.34037 16.3168C2.74946 16.9078 1.45401 17.5668 0.454012 18.2941L0.454012 15.9305C2.47674 14.5441 4.68886 13.4759 7.09038 12.7259C9.49947 11.9835 12.1358 11.6123 14.9995 11.6123Z" fill="black" />
+												<path d="M6.18013 2.04545C6.18013 1.48485 6.38089 1.00379 6.7824 0.602272C7.18392 0.200757 7.66498 -6.80176e-07 8.22559 -6.55671e-07C8.78619 -6.31166e-07 9.26725 0.200757 9.66877 0.602272C10.0703 1.00379 10.271 1.48485 10.271 2.04545C10.271 2.60606 10.0703 3.08712 9.66877 3.48864C9.26725 3.89015 8.78619 4.09091 8.22559 4.09091C7.85437 4.09091 7.51347 3.99621 7.20286 3.80682C6.89225 3.625 6.64225 3.37879 6.45286 3.06818C6.27104 2.76515 6.18013 2.42424 6.18013 2.04545ZM19.1347 2.04545C19.1347 1.48485 19.3354 1.00379 19.7369 0.602273C20.1385 0.200757 20.6195 -1.13915e-07 21.1801 -8.94096e-08C21.7407 -6.49048e-08 22.2218 0.200758 22.6233 0.602273C23.0248 1.00379 23.2256 1.48485 23.2256 2.04545C23.2256 2.60606 23.0248 3.08712 22.6233 3.48864C22.2218 3.89015 21.7407 4.09091 21.1801 4.09091C20.8089 4.09091 20.468 3.99621 20.1574 3.80682C19.8468 3.625 19.5968 3.37879 19.4074 3.06818C19.2256 2.76515 19.1347 2.42424 19.1347 2.04545Z" fill="black" />
+											</svg>
+										</div>
+										<div class="search-empty__title">
+											УПС! За вашим запитом нічого не знайдено
+										</div>
+										<div class="search-empty__subtitle">
+											Перевірте правопис або спробуйте використати іншу назву
+										</div>
+									</div>
+									<div class="search-products _hidden">
+										<div class="search-products__body">
+											<div class="search-product search-products__product">
+												<a href="#" class="search-product__image">
+													<img src="img/models/models_001.webp" alt="">
+												</a>
+												<div class="search-product__text">
+													<a href="#" class="search-product__title">
+														Kapsen 1 07 LV8 AJ7747-100
+													</a>
+													<div class="search-product__copy product__copy">
+														<div class="product__code--wrap">
+															<div class="product__code--text">Код товару:</div>
+															<div class="product__code">Iota</div>
+														</div>
+														<button type="button" class="product__icon _icon-copy"></button>
+													</div>
+													<div class="search-product__rating">
+														<div class="product-rating">
+															<div class="product-rating__block">
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star hide _icon-star-1"></div>
+															</div>
+															<div class="product-rating__icon _icon-comment"><span>8</span></div>
+														</div>
+													</div>
+													<div class="search-product__stock">
+														В наявності
+													</div>
+												</div>
+												<a href="#" class="search-product__priced">
+													<div class="search-product__price">6720 грн</div>
+												</a>
+											</div>
+											<div class="search-product search-products__product">
+												<a href="#" class="search-product__image">
+													<img src="img/models/models_001.webp" alt="">
+												</a>
+												<div class="search-product__text">
+													<a href="#" class="search-product__title">
+														Kapsen 1 07 LV8 AJ7747-100
+													</a>
+													<div class="search-product__copy product__copy">
+														<div class="product__code--wrap">
+															<div class="product__code--text">Код товару:</div>
+															<div class="product__code">Iota</div>
+														</div>
+														<button type="button" class="product__icon _icon-copy"></button>
+													</div>
+													<div class="search-product__rating">
+														<div class="product-rating">
+															<div class="product-rating__block">
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star hide _icon-star-1"></div>
+															</div>
+															<div class="product-rating__icon _icon-comment"><span>8</span></div>
+														</div>
+													</div>
+													<div class="search-product__stock">
+														В наявності
+													</div>
+												</div>
+												<a href="#" class="search-product__priced">
+													<div class="search-product__price">6720 грн</div>
+												</a>
+											</div>
+											<div class="search-product search-products__product">
+												<a href="#" class="search-product__image">
+													<img src="img/models/models_001.webp" alt="">
+												</a>
+												<div class="search-product__text">
+													<a href="#" class="search-product__title">
+														Kapsen 1 07 LV8 AJ7747-100
+													</a>
+													<div class="search-product__copy product__copy">
+														<div class="product__code--wrap">
+															<div class="product__code--text">Код товару:</div>
+															<div class="product__code">Iota</div>
+														</div>
+														<button type="button" class="product__icon _icon-copy"></button>
+													</div>
+													<div class="search-product__rating">
+														<div class="product-rating">
+															<div class="product-rating__block">
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star hide _icon-star-1"></div>
+															</div>
+															<div class="product-rating__icon _icon-comment"><span>8</span></div>
+														</div>
+													</div>
+													<div class="search-product__stock">
+														В наявності
+													</div>
+												</div>
+												<a href="#" class="search-product__priced">
+													<div class="search-product__price">6720 грн</div>
+												</a>
+											</div>
+											<div class="search-product search-products__product">
+												<a href="#" class="search-product__image">
+													<img src="img/models/models_001.webp" alt="">
+												</a>
+												<div class="search-product__text">
+													<a href="#" class="search-product__title">
+														Kapsen 1 07 LV8 AJ7747-100
+													</a>
+													<div class="search-product__copy product__copy">
+														<div class="product__code--wrap">
+															<div class="product__code--text">Код товару:</div>
+															<div class="product__code">Iota</div>
+														</div>
+														<button type="button" class="product__icon _icon-copy"></button>
+													</div>
+													<div class="search-product__rating">
+														<div class="product-rating">
+															<div class="product-rating__block">
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star hide _icon-star-1"></div>
+															</div>
+															<div class="product-rating__icon _icon-comment"><span>8</span></div>
+														</div>
+													</div>
+													<div class="search-product__stock search-product__stock_none">
+														Немає в наявності
+													</div>
+												</div>
+												<a href="#" class="search-product__priced">
+													<div class="search-product__price search-product__price-old">6720 грн</div>
+													<div class="search-product__special">3 550 грн</div>
+												</a>
+											</div>
+											<div class="search-product search-products__product">
+												<a href="#" class="search-product__image">
+													<img src="img/models/models_001.webp" alt="">
+												</a>
+												<div class="search-product__text">
+													<a href="#" class="search-product__title">
+														Kapsen 1 07 LV8 AJ7747-100
+													</a>
+													<div class="search-product__copy product__copy">
+														<div class="product__code--wrap">
+															<div class="product__code--text">Код товару:</div>
+															<div class="product__code">Iota</div>
+														</div>
+														<button type="button" class="product__icon _icon-copy"></button>
+													</div>
+													<div class="search-product__rating">
+														<div class="product-rating">
+															<div class="product-rating__block">
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star _icon-star-1"></div>
+																<div class="product-rating__star hide _icon-star-1"></div>
+															</div>
+															<div class="product-rating__icon _icon-comment"><span>8</span></div>
+														</div>
+													</div>
+													<div class="search-product__stock search-product__stock_none">
+														Немає в наявності
+													</div>
+												</div>
+												<a href="#" class="search-product__priced">
+													<div class="search-product__price search-product__price-old">6720 грн</div>
+													<div class="search-product__special">3 550 грн</div>
+												</a>
+											</div>
+										</div>
+										<div class="search-products__footer">
+											<a href="#" class="search-products__more">
+												<span class="search-products__text">УСІ Результати пошуку (80)</span>
+												<span class="_icon-arrow"></span>
+											</a>
+										</div>
+									</div>
+								</div>
 							</div>
 							<div class="header__actions">
 								<a href="" data-popup="#popup" class="header__action _icon-png-chat"></a>
@@ -535,13 +803,16 @@
 		<footer class="footer">
 			<div class="footer__container">
 				<div class="footer__wrapper">
-					<form action="" class="footer__offer offer-form">
+					<div class="footer__offer offer-form">
 						<div class="offer-form__title title-m">Вкажіть свій емейл для отримання найвигідніших пропозицій</div>
-						<div class="offer-form__item">
-							<input type="text" name="" placeholder="your.email@gmail.com" class="offer-form__input">
-							<button type="submit" class="offer-form__button btn-white">надіслати</button>
+						<div class="offer-form__search search">
+							<form action="#" class="search__form">
+								<input type="text" name="mail" placeholder="your.email@gmail.com" class="search__input offer-form__input">
+								<button type="submit" class="search__button offer-form__button btn-white _icon-search">надіслати</button>
+								<button type="button" class="search__clear _icon-close"></button>
+							</form>
 						</div>
-					</form>
+					</div>
 					<div class="footer__main">
 						<div class="footer__inner">
 							<div class="footer__column">
@@ -616,7 +887,7 @@
 					<form action="" data-dev data-popup-message="#popup-success" class="modal-popup__form form">
 						<div class="form__wrap">
 							<div class="form__item">
-								<input type="text" name="name" class="form__input" placeholder="Імʼя*" data-required="name" data-error="Поле є обовʼязковим для заповнення" data-validate>
+								<input type="text" name="fisrt-name" class="form__input" placeholder="Імʼя*" data-required="name" data-error="Поле є обовʼязковим для заповнення" data-validate>
 							</div>
 							<div class="form__item">
 								<input type="tel" name="phone" class="form__input phone-mask" placeholder="+38(___)-___-__-__*" data-required="phone" data-error="Перевірте номер телефону і спробуйте ще раз" data-validate>
@@ -663,7 +934,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="js/app.min.js?_v=20250605184021"></script>
+	<script src="js/app.min.js?_v=20250610205155"></script>
 </body>
 
 </html>
