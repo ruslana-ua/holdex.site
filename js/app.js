@@ -4384,40 +4384,40 @@
             if (target.hidden) return _slideDown(target, duration); else return _slideUp(target, duration);
         };
         let bodyLockStatus = true;
-        let bodyLockToggle = (delay = 500) => {
-            if (document.documentElement.classList.contains("lock")) bodyUnlock(delay); else bodyLock(delay);
-        };
-        let bodyUnlock = (delay = 500) => {
-            if (bodyLockStatus) {
-                const lockPaddingElements = document.querySelectorAll("[data-lp]");
-                setTimeout((() => {
-                    lockPaddingElements.forEach((lockPaddingElement => {
-                        lockPaddingElement.style.paddingRight = "";
-                    }));
-                    document.body.style.paddingRight = "";
-                    document.documentElement.classList.remove("lock");
-                }), delay);
-                bodyLockStatus = false;
-                setTimeout((function() {
-                    bodyLockStatus = true;
-                }), delay);
-            }
-        };
-        let bodyLock = (delay = 500) => {
+        let bodyLockCounter = 0;
+        function bodyLock(delay = 0) {
             if (bodyLockStatus) {
                 const lockPaddingElements = document.querySelectorAll("[data-lp]");
                 const lockPaddingValue = window.innerWidth - document.body.offsetWidth + "px";
-                lockPaddingElements.forEach((lockPaddingElement => {
-                    lockPaddingElement.style.paddingRight = lockPaddingValue;
+                lockPaddingElements.forEach((el => {
+                    el.style.paddingRight = lockPaddingValue;
                 }));
                 document.body.style.paddingRight = lockPaddingValue;
                 document.documentElement.classList.add("lock");
                 bodyLockStatus = false;
-                setTimeout((function() {
+                bodyLockCounter++;
+                setTimeout((() => {
                     bodyLockStatus = true;
                 }), delay);
             }
-        };
+        }
+        function bodyUnlock(delay = 0) {
+            if (!bodyLockStatus) {
+                const lockPaddingElements = document.querySelectorAll("[data-lp]");
+                setTimeout((() => {
+                    lockPaddingElements.forEach((el => {
+                        el.style.paddingRight = "";
+                    }));
+                    document.body.style.paddingRight = "";
+                    document.documentElement.classList.remove("lock");
+                }), delay);
+                bodyLockStatus = true;
+                if (bodyLockCounter > 0) bodyLockCounter--;
+            }
+        }
+        function bodyLockToggle(delay = 0) {
+            if (document.documentElement.classList.contains("lock")) bodyUnlock(delay); else bodyLock(delay);
+        }
         function spollers() {
             const spollersArray = document.querySelectorAll("[data-spollers]");
             if (spollersArray.length > 0) {
@@ -4530,8 +4530,8 @@
             }
         }
         function menuInit() {
+            const menuContainer = document.querySelector(".menu-catalog__container");
             const menuBody = document.querySelector(".menu-catalog__inner");
-            const subMenuCatalog = document.querySelector(".sub-menu-catalog");
             const subMenuCatalogBlocks = document.querySelectorAll(".sub-menu-catalog__list");
             const iconCloseButtons = document.querySelectorAll(".icon-close");
             if (document.querySelector(".icon-menu")) {
@@ -4540,16 +4540,12 @@
                         bodyLockToggle();
                         document.documentElement.classList.toggle("menu-open");
                         document.documentElement.classList.remove("sub-menu-open");
-                        subMenuCatalogBlocks.forEach((block => {
-                            if (block) block.classList.remove("_sub-menu-open");
-                        }));
-                    } else if (!menuBody.contains(e.target) && !subMenuCatalog.contains(e.target)) {
+                        subMenuCatalogBlocks.forEach((block => block.classList.remove("_sub-menu-open")));
+                    } else if (!menuBody.contains(e.target)) {
                         functions_menuClose();
                         bodyUnlock();
                         document.documentElement.classList.remove("sub-menu-open");
-                        subMenuCatalogBlocks.forEach((block => {
-                            if (block) block.classList.remove("_sub-menu-open");
-                        }));
+                        subMenuCatalogBlocks.forEach((block => block.classList.remove("_sub-menu-open")));
                     }
                 }));
                 if (!isMobile.any()) {
@@ -4565,16 +4561,15 @@
                             }
                         }));
                         document.addEventListener("click", (function(e) {
-                            if (!menuBody.contains(e.target) && !iconMenu.contains(e.target)) {
+                            if (!menuContainer.contains(e.target) && !iconMenu.contains(e.target)) {
                                 functions_menuClose();
                                 bodyUnlock();
+                                subMenuCatalogBlocks.forEach((block => block.classList.remove("_sub-menu-open")));
                             }
                         }));
-                        menuBody.addEventListener("mouseleave", (() => {
+                        menuContainer.addEventListener("mouseleave", (() => {
                             functions_menuClose();
-                            subMenuCatalogBlocks.forEach((block => {
-                                if (block) block.classList.remove("_sub-menu-open");
-                            }));
+                            subMenuCatalogBlocks.forEach((block => block.classList.remove("_sub-menu-open")));
                             bodyUnlock();
                         }));
                         document.querySelectorAll(".menu-catalog__item").forEach((item => {
@@ -4593,9 +4588,7 @@
                     button.addEventListener("click", (function() {
                         functions_menuClose();
                         document.documentElement.classList.remove("sub-menu-open");
-                        subMenuCatalogBlocks.forEach((block => {
-                            if (block) block.classList.remove("_sub-menu-open");
-                        }));
+                        subMenuCatalogBlocks.forEach((block => block.classList.remove("_sub-menu-open")));
                         bodyUnlock();
                     }));
                 }));
@@ -14658,20 +14651,103 @@
                 e.preventDefault();
             }
         }
+        document.addEventListener("click", searchMenuActions);
+        function searchMenuActions(e) {
+            const targetElement = e.target;
+            if (targetElement.closest("[data-parent-search]")) {
+                const subMenuId = targetElement.dataset.parentSearch;
+                const subMenu = document.querySelector(`[data-submenu-search="${subMenuId}"]`);
+                const subMenuTitle = document.querySelector(".sub-menu-search__title");
+                if (subMenu) {
+                    const activeLink = document.querySelector("._search-sub-menu-active");
+                    const activeBlock = document.querySelector("._search-sub-menu-open");
+                    if (activeLink && activeLink !== targetElement) activeLink.classList.remove("_search-sub-menu-active");
+                    if (activeBlock) activeBlock.classList.remove("_search-sub-menu-open");
+                    document.documentElement.classList.remove("search-sub-menu-open");
+                    document.documentElement.classList.toggle("search-sub-menu-open");
+                    targetElement.classList.toggle("_search-sub-menu-active");
+                    subMenu.classList.toggle("_search-sub-menu-open");
+                    if (subMenuTitle) subMenuTitle.textContent = targetElement.textContent;
+                } else console.log("Підменю для пошуку не знайдено :(");
+                e.preventDefault();
+            }
+            if (targetElement.closest(".search-menu__back")) {
+                document.documentElement.classList.remove("search-sub-menu-open");
+                document.querySelectorAll("._search-sub-menu-active, ._search-sub-menu-open").forEach((el => el.classList.remove("_search-sub-menu-active", "_search-sub-menu-open")));
+                e.preventDefault();
+            }
+        }
+        const searchTriggers = document.querySelectorAll(".header__search, .search__input");
+        searchTriggers.forEach((trigger => {
+            const currentForm = trigger.closest(".search__form");
+            if (!currentForm) return;
+            const search = currentForm.querySelector(".search-header") || document.querySelector(".search-header");
+            const search_dropdown = currentForm.nextElementSibling?.classList.contains("search-dropdown") ? currentForm.nextElementSibling : null;
+            const search_shadow = document.querySelectorAll(".search-shadow");
+            document.addEventListener("click", (event => {
+                const clickedInsideForm = currentForm.contains(event.target);
+                const clickedInsideDropdown = search_dropdown && search_dropdown.contains(event.target);
+                const clickedInsideShadow = Array.from(search_shadow).some((element => element.contains(event.target)));
+                if (!clickedInsideForm && !clickedInsideDropdown && !clickedInsideShadow) {
+                    if (search) search.classList.remove("_active");
+                    if (search_dropdown) search_dropdown.classList.remove("_active");
+                    search_shadow.forEach((element => element.classList.remove("_active")));
+                    if (typeof bodyUnlock === "function") bodyUnlock();
+                }
+            }));
+            const clearInputBtn = currentForm.querySelector(".search__clear");
+            const searchInput = currentForm.querySelector(".search__input");
+            if (clearInputBtn && searchInput) {
+                function clearInput() {
+                    searchInput.value = "";
+                    clearInputBtn.classList.remove("visible");
+                    if (search) search.classList.remove("_active");
+                    if (search_dropdown) search_dropdown.classList.remove("_active");
+                    search_shadow.forEach((element => element.classList.remove("_active")));
+                    if (typeof bodyUnlock === "function") bodyUnlock();
+                }
+                function updateClearButtonVisibility() {
+                    const inputValue = searchInput.value.trim();
+                    if (inputValue) clearInputBtn.classList.add("visible"); else clearInputBtn.classList.remove("visible");
+                }
+                searchInput.addEventListener("input", updateClearButtonVisibility);
+                searchInput.addEventListener("keydown", (event => {
+                    if (event.key === "Backspace") setTimeout(updateClearButtonVisibility, 0);
+                }));
+                clearInputBtn.addEventListener("click", clearInput);
+            }
+        }));
         function copyProductCode(button) {
-            var productCopy = button.closest(".product__copy");
-            var productCodeElement = productCopy.querySelector(".product__code");
-            var productCodeText = productCodeElement.textContent || productCodeElement.innerText;
-            var tempInput = document.createElement("input");
-            tempInput.value = productCodeText;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
-            productCopy.classList.add("done");
-            setTimeout((function() {
-                productCopy.classList.remove("done");
-            }), 6e4);
+            const productCopy = button.closest(".product__copy");
+            const productCodeElement = productCopy.querySelector(".product__code");
+            const productCodeText = productCodeElement.textContent.trim();
+            if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(productCodeText).then((() => {
+                productCopy.classList.add("done");
+                setTimeout((() => productCopy.classList.remove("done")), 6e4);
+            })).catch((err => console.error("Ошибка копирования: ", err))); else {
+                const tempElem = document.createElement("textarea");
+                tempElem.value = productCodeText;
+                tempElem.setAttribute("readonly", "");
+                tempElem.setAttribute("tabindex", "-1");
+                tempElem.setAttribute("data-no-focus-classes", "");
+                tempElem.style.position = "fixed";
+                tempElem.style.top = "-9999px";
+                document.body.appendChild(tempElem);
+                const range = document.createRange();
+                range.selectNodeContents(tempElem);
+                const selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+                try {
+                    document.execCommand("copy");
+                } catch (err) {
+                    console.error("execCommand Error: ", err);
+                }
+                selection.removeAllRanges();
+                document.body.removeChild(tempElem);
+                productCopy.classList.add("done");
+                setTimeout((() => productCopy.classList.remove("done")), 6e4);
+            }
         }
         window.initCopyProductCode = function() {
             var iconButtons = document.querySelectorAll(".product__icon");
