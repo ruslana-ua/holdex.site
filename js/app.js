@@ -4384,40 +4384,40 @@
             if (target.hidden) return _slideDown(target, duration); else return _slideUp(target, duration);
         };
         let bodyLockStatus = true;
-        let bodyLockCounter = 0;
-        function bodyLock(delay = 0) {
+        let bodyLockToggle = (delay = 500) => {
+            if (document.documentElement.classList.contains("lock")) bodyUnlock(delay); else bodyLock(delay);
+        };
+        let bodyUnlock = (delay = 500) => {
             if (bodyLockStatus) {
                 const lockPaddingElements = document.querySelectorAll("[data-lp]");
-                const lockPaddingValue = window.innerWidth - document.body.offsetWidth + "px";
-                lockPaddingElements.forEach((el => {
-                    el.style.paddingRight = lockPaddingValue;
-                }));
-                document.body.style.paddingRight = lockPaddingValue;
-                document.documentElement.classList.add("lock");
-                bodyLockStatus = false;
-                bodyLockCounter++;
                 setTimeout((() => {
-                    bodyLockStatus = true;
-                }), delay);
-            }
-        }
-        function bodyUnlock(delay = 0) {
-            if (!bodyLockStatus) {
-                const lockPaddingElements = document.querySelectorAll("[data-lp]");
-                setTimeout((() => {
-                    lockPaddingElements.forEach((el => {
-                        el.style.paddingRight = "";
+                    lockPaddingElements.forEach((lockPaddingElement => {
+                        lockPaddingElement.style.paddingRight = "";
                     }));
                     document.body.style.paddingRight = "";
                     document.documentElement.classList.remove("lock");
                 }), delay);
-                bodyLockStatus = true;
-                if (bodyLockCounter > 0) bodyLockCounter--;
+                bodyLockStatus = false;
+                setTimeout((function() {
+                    bodyLockStatus = true;
+                }), delay);
             }
-        }
-        function bodyLockToggle(delay = 0) {
-            if (document.documentElement.classList.contains("lock")) bodyUnlock(delay); else bodyLock(delay);
-        }
+        };
+        let bodyLock = (delay = 500) => {
+            if (bodyLockStatus) {
+                const lockPaddingElements = document.querySelectorAll("[data-lp]");
+                const lockPaddingValue = window.innerWidth - document.body.offsetWidth + "px";
+                lockPaddingElements.forEach((lockPaddingElement => {
+                    lockPaddingElement.style.paddingRight = lockPaddingValue;
+                }));
+                document.body.style.paddingRight = lockPaddingValue;
+                document.documentElement.classList.add("lock");
+                bodyLockStatus = false;
+                setTimeout((function() {
+                    bodyLockStatus = true;
+                }), delay);
+            }
+        };
         function spollers() {
             const spollersArray = document.querySelectorAll("[data-spollers]");
             if (spollersArray.length > 0) {
@@ -13416,13 +13416,14 @@
                 let galleryThumbs;
                 let activeIndex = 0;
                 function initSwipers() {
-                    if (window.innerWidth >= 767.98) {
-                        if (galleryMain) activeIndex = galleryMain.activeIndex;
-                        if (galleryMain) galleryMain.destroy(true, true);
-                        if (galleryThumbs) {
-                            galleryThumbs.destroy(true, true);
-                            galleryThumbs = null;
-                        }
+                    if (galleryMain) {
+                        activeIndex = galleryMain.activeIndex;
+                        galleryMain.destroy(true, true);
+                        galleryMain = null;
+                    }
+                    if (galleryThumbs) {
+                        galleryThumbs.destroy(true, true);
+                        galleryThumbs = null;
                     }
                     let swiperParams = {
                         modules: [ Thumb, EffectFade, Navigation, Zoom ],
@@ -14684,6 +14685,13 @@
             const search = currentForm.querySelector(".search-header") || document.querySelector(".search-header");
             const search_dropdown = currentForm.nextElementSibling?.classList.contains("search-dropdown") ? currentForm.nextElementSibling : null;
             const search_shadow = document.querySelectorAll(".search-shadow");
+            trigger.addEventListener("click", (function(event) {
+                event.stopPropagation();
+                if (search) search.classList.add("_active");
+                if (search_dropdown) search_dropdown.classList.add("_active");
+                search_shadow.forEach((element => element.classList.add("_active")));
+                if (typeof bodyLock === "function") bodyLock();
+            }));
             document.addEventListener("click", (event => {
                 const clickedInsideForm = currentForm.contains(event.target);
                 const clickedInsideDropdown = search_dropdown && search_dropdown.contains(event.target);
