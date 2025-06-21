@@ -13490,8 +13490,12 @@
                     };
                 }
                 initSwipers();
+                let resizeTimeout;
                 window.addEventListener("resize", (() => {
-                    initSwipers();
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout((() => {
+                        initSwipers();
+                    }), 300);
                 }));
             }
         }
@@ -14653,30 +14657,42 @@
             }
         }
         document.addEventListener("click", searchMenuActions);
+        document.addEventListener("mouseenter", searchMenuHoverActions, true);
         function searchMenuActions(e) {
             const targetElement = e.target;
+            if (!(targetElement instanceof Element)) return;
             if (targetElement.closest("[data-parent-search]")) {
-                const subMenuId = targetElement.dataset.parentSearch;
-                const subMenu = document.querySelector(`[data-submenu-search="${subMenuId}"]`);
-                const subMenuTitle = document.querySelector(".sub-menu-search__title");
-                if (subMenu) {
-                    const activeLink = document.querySelector("._search-sub-menu-active");
-                    const activeBlock = document.querySelector("._search-sub-menu-open");
-                    if (activeLink && activeLink !== targetElement) activeLink.classList.remove("_search-sub-menu-active");
-                    if (activeBlock) activeBlock.classList.remove("_search-sub-menu-open");
-                    document.documentElement.classList.remove("search-sub-menu-open");
-                    document.documentElement.classList.toggle("search-sub-menu-open");
-                    targetElement.classList.toggle("_search-sub-menu-active");
-                    subMenu.classList.toggle("_search-sub-menu-open");
-                    if (subMenuTitle) subMenuTitle.textContent = targetElement.textContent;
-                } else console.log("Підменю для пошуку не знайдено :(");
+                handleSubMenu(targetElement);
                 e.preventDefault();
             }
             if (targetElement.closest(".search-menu__back")) {
-                document.documentElement.classList.remove("search-sub-menu-open");
-                document.querySelectorAll("._search-sub-menu-active, ._search-sub-menu-open").forEach((el => el.classList.remove("_search-sub-menu-active", "_search-sub-menu-open")));
+                closeSubMenus();
                 e.preventDefault();
             }
+        }
+        function searchMenuHoverActions(e) {
+            const targetElement = e.target;
+            if (!(targetElement instanceof Element)) return;
+            if (targetElement.closest("[data-parent-search]")) handleSubMenu(targetElement);
+        }
+        function handleSubMenu(targetElement) {
+            const subMenuId = targetElement.dataset.parentSearch;
+            const subMenu = document.querySelector(`[data-submenu-search="${subMenuId}"]`);
+            const subMenuTitle = document.querySelector(".sub-menu-search__title");
+            if (subMenu) {
+                const activeLink = document.querySelector("._search-sub-menu-active");
+                const activeBlock = document.querySelector("._search-sub-menu-open");
+                if (activeLink && activeLink !== targetElement) activeLink.classList.remove("_search-sub-menu-active");
+                if (activeBlock) activeBlock.classList.remove("_search-sub-menu-open");
+                document.documentElement.classList.add("search-sub-menu-open");
+                targetElement.classList.add("_search-sub-menu-active");
+                subMenu.classList.add("_search-sub-menu-open");
+                if (subMenuTitle) subMenuTitle.textContent = targetElement.textContent;
+            } else console.log("Підменю для пошуку не знайдено :(");
+        }
+        function closeSubMenus() {
+            document.documentElement.classList.remove("search-sub-menu-open");
+            document.querySelectorAll("._search-sub-menu-active, ._search-sub-menu-open").forEach((el => el.classList.remove("_search-sub-menu-active", "_search-sub-menu-open")));
         }
         const searchTriggers = document.querySelectorAll(".header__search, .search__input");
         searchTriggers.forEach((trigger => {
