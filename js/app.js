@@ -13490,6 +13490,11 @@
                     };
                 }
                 initSwipers();
+                if (window.innerWidth <= 767.98) galleryMain.el.addEventListener("click", (e => {
+                    const slideWidth = galleryMain.el.clientWidth;
+                    const clickX = e.offsetX;
+                    if (clickX < slideWidth / 2) galleryMain.slidePrev(); else galleryMain.slideNext();
+                }));
                 let resizeTimeout;
                 window.addEventListener("resize", (() => {
                     clearTimeout(resizeTimeout);
@@ -14427,8 +14432,8 @@
                 if (scrollTop >= startPoint) {
                     header.classList.add("_header-scroll");
                     if (headerShow) {
-                        if (scrollTop > scrollDirection) header.classList.remove("_header-show"); else header.classList.add("_header-show");
-                        timer = setTimeout((() => {
+                        if (scrollTop > scrollDirection) header.classList.remove("_header-show"); else if (scrollTop < scrollDirection) header.classList.add("_header-show");
+                        if (window.innerHeight + scrollTop >= document.documentElement.scrollHeight) header.classList.add("_header-show"); else timer = setTimeout((() => {
                             header.classList.add("_header-show");
                         }), headerShowTimer);
                     }
@@ -14436,7 +14441,7 @@
                     header.classList.remove("_header-scroll");
                     if (headerShow) header.classList.remove("_header-show");
                 }
-                scrollDirection = Math.max(scrollTop, 0);
+                scrollDirection = scrollTop;
             }
             document.addEventListener("windowScroll", handleScroll);
         }

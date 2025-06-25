@@ -10798,14 +10798,7 @@ section {
   flex-wrap: wrap
 }
 .favorits__product {
-  width: calc((100% - 0px)/ 4);
-  border-bottom: 1px solid var(--inverse);
-  border-right: 1px solid var(--inverse);
-  border-left: 1px solid var(--inverse);
-  margin: -1px -1px 0 0
-}
-.favorits__product::after {
-  display: none
+  width: calc((100% - 0px)/ 4)
 }
 @media (max-width:80.74875em) {
   .favorits__product {
