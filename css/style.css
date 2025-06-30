@@ -2103,6 +2103,23 @@ body::after {
     overflow: visible!important;
     padding: 0 0 8px 0!important
   }
+  .gallery-popup__gallery .gallery__preview img {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+  }
+  .gallery-popup__gallery .gallery__slide {
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    user-drag: none;
+    touch-action: manipulation
+  }
 }
 @media (min-width:61.99875em) {
   .gallery-popup__actions {

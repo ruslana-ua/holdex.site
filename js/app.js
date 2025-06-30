@@ -13433,6 +13433,7 @@
                         watchSlidesProgress: true,
                         preventInteractionOnTransition: true,
                         loop: true,
+                        speed: 300,
                         zoom: {
                             maxRatio: 3
                         },
